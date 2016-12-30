@@ -847,7 +847,16 @@ extension Path {
 
     /// The modification date of the file at the path.
     public var modificationDate: Date? {
-        return attributes[FileAttributeKey.modificationDate] as? Date
+        get {
+            return attributes[FileAttributeKey.modificationDate] as? Date
+        }
+        set {
+            do {
+                try _setAttribute(FileAttributeKey.modificationDate, value: newValue!)
+            } catch {
+                
+            }
+        }
     }
 
     /// The name of the owner of the file at the path.
